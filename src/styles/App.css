@@ -4,8 +4,25 @@
     margin: 0;
     padding: 0;
 }
+:root {
+	--black: #222831;
+	--white: #EEEEEE;
+	--primary: #393E46;
+	--secondary: #3A89FF;
+}
 html,
 body {
     font-family: "Open Sans", sans-serif;
     min-height: 100vh;
+	background-color: var(--black);
+}
+#root {
+    min-height: 100vh;
+}
+span.blue {
+	color: var(--secondary);
+}
+@font-face {
+	font-family: "otomanopee";
+	src: url("../assets/otomanopee-one.ttf");
 }
