@@ -66,4 +66,31 @@ main.auth > article.form input[type="button"] {
 	padding: 15px 25px;
 	border-radius: 50px;
 	cursor: pointer;
+	color: var(--primary);
+}
+main.auth > article.form > dialog {
+	width: 100vw;
+	height: 100vh;
+	box-sizing: border-box;
+	background-color: #EEEEEEe5;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+main.auth > article.form > dialog h2 {
+	color: var(--primary);
+	font-size: 1.8rem;
+	margin-bottom: 10px;
+}
+main.auth > article.form > dialog div {
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.show-flex {
+	display: flex !important;
 }
