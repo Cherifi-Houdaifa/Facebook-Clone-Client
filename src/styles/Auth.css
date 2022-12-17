@@ -1,96 +1,93 @@
 main.auth {
-	display: flex;
-	min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
 main.auth > article {
-	width: 50%;
+    width: 50%;
 }
 main.auth > article.text {
-	color: var(--white);
-	display: flex;
-	justify-content: center;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
 }
 main.auth > article.text div {
-	margin-top: 27%;
+    margin-top: 27%;
 }
 main.auth > article.text h1 {
-	font-family: "otomanopee";
-	font-size: 2.8rem;
+    font-family: "otomanopee";
+    font-size: 2.8rem;
 }
 main.auth > article.text p.subname {
-	font-size: 1.4rem;
-	text-align: right;
-	line-height: 10px;
-	padding-right: 30px;
+    font-size: 1.4rem;
+    text-align: right;
+    line-height: 10px;
+    padding-right: 30px;
 }
 main.auth > article.text p.subtext {
-	margin-top: 40px;
-	font-size: 1.2rem;
+    margin-top: 40px;
+    font-size: 1.2rem;
 }
 main.auth > article.text span {
-	font-family: "otomanopee";
+    font-family: "otomanopee";
 }
 
 main.auth > article.form {
-	background-color: var(--white);
-	display: flex;
-	justify-content: center;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
 }
 main.auth > article.form > div {
-	width: 70%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-	padding-top: 30%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 30%;
 }
 main.auth > article.form input[type="text"] {
-	outline: none;
-	background-color: var(--primary);
-	color: #eeeeee94;
-	border: none;
-	padding: 15px 25px;
-	font-size: 1rem;
-	margin-bottom: 15px;
-	width: 80%;
-	box-sizing: border-box;
+    outline: none;
+    background-color: var(--primary);
+    color: #eeeeee94;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    width: 80%;
+    box-sizing: border-box;
 }
 main.auth > article.form input[type="button"] {
-	outline: none;
-	background-color: transparent;
-	border: solid 5px var(--primary);
-	font-size: 1rem;
-	margin-bottom: 15px;
-	width: 80%;
-	box-sizing: border-box;
-	padding: 15px 25px;
-	border-radius: 50px;
-	cursor: pointer;
-	color: var(--primary);
+    outline: none;
+    background-color: transparent;
+    border: solid 5px var(--primary);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 15px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--primary);
 }
 main.auth > article.form > dialog {
-	width: 100vw;
-	height: 100vh;
-	box-sizing: border-box;
-	background-color: #EEEEEEe5;
-	border: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: none;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #eeeeeee5;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 main.auth > article.form > dialog h2 {
-	color: var(--primary);
-	font-size: 1.8rem;
-	margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 main.auth > article.form > dialog div {
-	width: 30%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-.show-flex {
-	display: flex !important;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

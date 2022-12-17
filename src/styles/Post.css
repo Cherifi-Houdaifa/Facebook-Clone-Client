@@ -1,0 +1,38 @@
+section.post {
+    width: 350px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    color: var(--primary);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin: 10px;
+    margin-bottom: 40px;
+}
+section.post > p {
+    font-size: 1.1rem;
+    margin: 5px;
+    line-break: anywhere;
+    cursor: pointer;
+}
+section.post > div.image {
+    width: 95%;
+    align-self: center;
+    max-height: 350px;
+}
+section.post > div.image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+section.post > div.like-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+section.post > div.like-box > img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

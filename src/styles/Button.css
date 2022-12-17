@@ -1,0 +1,12 @@
+input.secondary-button {
+	border: none;
+	background-color: var(--secondary);
+	color: var(--white);
+	padding: 15px 40px;
+	border-radius: 50px;
+	font-size: 1.4rem;
+	cursor: pointer;
+}
+input.secondary-button:hover {
+	background-color: #5096ff;
+}
