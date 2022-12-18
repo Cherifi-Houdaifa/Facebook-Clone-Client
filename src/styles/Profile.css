@@ -1,0 +1,99 @@
+main.profile {
+	min-height: 100vh;
+}
+article.profile-data {
+	display: flex;
+	align-items: center;
+	min-height: calc(100vh - 80px);
+	padding: 0 6vw;
+	justify-content: space-around;
+}
+article.profile-data > div.data {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 230px;
+	height: 270px;
+	justify-content: space-between;
+	position: relative;
+}
+article.profile-data > div.data > img {
+	width: 90%;
+	border-radius: 50%;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+}
+article.profile-data > div.data > img:hover {
+	opacity: 0.4;
+}
+article.profile-data > div.data > span {
+	color: var(--white);
+	font-size: 1.7rem;
+}
+article.profile-data > div.data > div.hover-popup {
+	display: none;
+	width: 90%;
+	aspect-ratio: 1 / 1;
+	position: absolute;
+	top: 0;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	pointer-events: none;
+}
+article.profile-data > div.data > div.hover-popup > img {
+	width: 100px;
+}
+
+article.profile-data > div.friends {
+	height: 415px;
+	width: 340px;
+	background-color: var(--white);
+	color: var(--primary);
+	overflow-y: scroll;
+}
+article.profile-data > div.friends > h2 {
+	font-size: 1.9rem;
+	text-align: center;
+	margin-top: 5px;
+}
+article.profile-data > div.friends > div.friend {
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 10px;
+}
+article.profile-data > div.friends > div.friend > img[alt="Friend profile photo"] {
+	height: 95%;
+	border-radius: 50%;
+}
+article.profile-data > div.friends > div.friend > span {
+	font-size: 1.4rem;
+	cursor: pointer;
+}
+article.profile-data > div.friends > div.friend > div {
+	height: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	padding: 5px;
+	transition: all 0.2s;
+}
+article.profile-data > div.friends > div.friend > div:hover {
+	background-color: #393e4626;
+}
+article.profile-data > div.friends > div.friend > div > img {
+	height: 100%;
+}
+
+main.profile > article.posts > h2 {
+	text-align: center;
+	color: var(--white);
+	font-size: 2.8rem;
+}
+main.profile > article.posts > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+}
