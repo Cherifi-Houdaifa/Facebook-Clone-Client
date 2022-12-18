@@ -4,11 +4,11 @@ import "../styles/Post.css";
 import like from "../assets/like.svg";
 import likeFilled from "../assets/like-filled.svg";
 
-export default function Post({ text, image, liked, id }) {
+export default function Post({ text, image, liked, id, nolink }) {
     const navigate = useNavigate();
     return (
         <section className="post">
-            <p onClick={(e) => navigate(`/posts/${id}`)}>{text}</p>
+            <p onClick={(e) => nolink ? null : navigate(`/posts/${id}`)}>{text}</p>
             {image ? (
                 <div className="image">
                     <img src={image} alt="Post image" />
