@@ -4,6 +4,7 @@ import "./styles/App.css";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Posts from "./pages/Posts";
+import Search from "./pages/Search";
 
 export default function App() {
     return (
@@ -12,6 +13,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/posts/:postid" element={<Posts />} />
+                <Route path="/search" element={<Search />} />
             </Routes>
         </Router>
     );
