@@ -6,6 +6,7 @@ import Auth from "./pages/Auth";
 import Posts from "./pages/Posts";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
+import Users from "./pages/Users";
 
 export default function App() {
     return (
@@ -16,6 +17,7 @@ export default function App() {
                 <Route path="/posts/:postid" element={<Posts />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/users/:userid" element={<Users />} />
             </Routes>
         </Router>
     );

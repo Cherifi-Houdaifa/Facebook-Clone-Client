@@ -4,10 +4,9 @@ import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Button from "../components/Button";
 import profilePic from "../assets/profilePic.jpg";
-import removePerson from "../assets/remove-person.svg";
-import edit from "../assets/edit.svg";
+import addPerson from "../assets/add-person.svg";
 
-export default function Profile() {
+export default function Users() {
     const hoverPopup = useRef();
     return (
         <main className="profile">
@@ -26,7 +25,7 @@ export default function Profile() {
                     />
                     <span>Default User</span>
                     <div className="hover-popup" ref={hoverPopup}>
-                        <img src={edit} alt="Edit button" />
+                        <img src={addPerson} alt="Edit button" />
                     </div>
                 </div>
                 <div className="friends">
@@ -34,12 +33,6 @@ export default function Profile() {
                     <div className="friend">
                         <img src={profilePic} alt="Friend profile photo" />
                         <span>Default User</span>
-                        <div>
-                            <img
-                                src={removePerson}
-                                alt="Remove friend button"
-                            />
-                        </div>
                     </div>
                 </div>
             </article>
