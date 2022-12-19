@@ -52,14 +52,98 @@ nav > div.bell-popup > h2 {
 	text-align: center;
 	margin-top: 10px;
 }
+nav > div.bell-popup > div.request {
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 10px;
+}
+nav > div.bell-popup > div.request > img {
+	height: 95%;
+	border-radius: 50%;
+}
+nav > div.bell-popup > div.request > span {
+	font-size: 1.4rem;
+	cursor: pointer;
+}
+nav > div.bell-popup > div.request > div {
+	height: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	padding: 5px;
+	transition: all 0.2s;
+}
+nav > div.bell-popup > div.request > div:hover {
+	background-color: #393e4626;
+}
+nav > div.bell-popup > div.request > div > img {
+	height: 100%;
+}
 nav > div.profile-popup {
 	display: none;
 	position: absolute;
 	width: 180px;
-	height: 200px;
+	min-height: 120px;
 	background-color: var(--white);
 	right: 10px;
 	top: 70px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	color: var(--primary);
+	flex-direction: column;
+
+}
+nav > div.profile-popup > span {
+	text-align: center;
+	padding: 20px 0;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+nav > div.profile-popup > span:hover {
+	background-color: #393e4631;
+}
+nav > dialog[open] {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+    box-sizing: border-box;
+    background-color: #eeeeeee5;
+    border: none;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav > dialog[open] > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 420px;
+	justify-content: space-between;
+}
+nav > dialog[open] textarea {
+	border: none;
+	background-color: var(--secondary);
+	font-size: 1.1rem;
+	color: var(--white);
+	padding: 10px 15px;
+}
+nav > dialog[open] label {
+	background-color: var(--primary);
+	color: var(--white);
+	padding: 15px 40px;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 1.4rem;
+}
+nav > dialog[open] input[type="file"] {
+	display: none;
+}
+nav > dialog[open] > img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	height: 68px;
 }

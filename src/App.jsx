@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
+import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Posts from "./pages/Posts";
@@ -11,6 +12,7 @@ import Users from "./pages/Users";
 export default function App() {
     return (
         <Router>
+			<NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/auth" element={<Auth />} />

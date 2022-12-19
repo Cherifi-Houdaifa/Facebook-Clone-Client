@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Posts.css";
-import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Button from "../components/Button";
 import profilePic from "../assets/profilePic.jpg";
@@ -8,7 +7,6 @@ import profilePic from "../assets/profilePic.jpg";
 export default function Posts() {
     return (
         <main className="posts">
-            <NavBar />
             <article className="post">
                 <div className="user">
                     <img src={profilePic} alt="User profile picture" />

@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import "../styles/Profile.css";
-import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Button from "../components/Button";
 import profilePic from "../assets/profilePic.jpg";
@@ -10,7 +9,6 @@ export default function Users() {
     const hoverPopup = useRef();
     return (
         <main className="profile">
-            <NavBar />
             <article className="profile-data">
                 <div className="data">
                     <img

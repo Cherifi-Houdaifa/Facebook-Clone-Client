@@ -68,7 +68,7 @@ main.auth > article.form input[type="button"] {
     cursor: pointer;
     color: var(--primary);
 }
-main.auth > article.form > dialog {
+main.auth > article.form > dialog[open] {
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
@@ -77,7 +77,6 @@ main.auth > article.form > dialog {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
 }
 main.auth > article.form > dialog h2 {
     color: var(--primary);
@@ -90,4 +89,11 @@ main.auth > article.form > dialog div {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+main.auth > article.form > dialog > img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	height: 68px;
 }

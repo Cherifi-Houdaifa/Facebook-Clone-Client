@@ -1,17 +1,17 @@
 import React, { useRef } from "react";
 import "../styles/Profile.css";
-import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Button from "../components/Button";
 import profilePic from "../assets/profilePic.jpg";
 import removePerson from "../assets/remove-person.svg";
 import edit from "../assets/edit.svg";
+import close from "../assets/close.svg";
 
 export default function Profile() {
     const hoverPopup = useRef();
+    const updateProfileDialog = useRef();
     return (
         <main className="profile">
-            <NavBar />
             <article className="profile-data">
                 <div className="data">
                     <img
@@ -22,6 +22,9 @@ export default function Profile() {
                         }
                         onMouseLeave={(e) =>
                             hoverPopup.current.classList.toggle("show-flex")
+                        }
+                        onClick={(e) =>
+                            updateProfileDialog.current.toggleAttribute("open")
                         }
                     />
                     <span>Default User</span>
@@ -53,6 +56,29 @@ export default function Profile() {
                     <Button text="See more" />
                 </div>
             </article>
+            <dialog ref={updateProfileDialog}>
+                <div>
+                    <h2>Update Profile</h2>
+                    <input
+                        type="text"
+                        placeholder="New username"
+                        autoComplete="off"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Profile photo url"
+                        autoComplete="off"
+                    />
+                    <Button text="Update profile" />
+                </div>
+                <img
+                    src={close}
+                    alt="Close Button"
+                    onClick={(e) =>
+                        updateProfileDialog.current.toggleAttribute("open")
+                    }
+                />
+            </dialog>
         </main>
     );
 }
