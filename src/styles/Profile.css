@@ -70,10 +70,10 @@ article.profile-data
     > img[alt="Friend profile photo"] {
     height: 95%;
     border-radius: 50%;
+	cursor: pointer;
 }
 article.profile-data > div.friends > div.friend > span {
     font-size: 1.4rem;
-    cursor: pointer;
 }
 article.profile-data > div.friends > div.friend > div {
     height: 40px;

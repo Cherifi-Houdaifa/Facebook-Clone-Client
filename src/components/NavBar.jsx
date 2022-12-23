@@ -23,8 +23,10 @@ export default function NavBar() {
     let location = useLocation();
 
     const [user, setUser] = useState({});
+	
     const [createPostTextInput, setCreatePostTextInput] = useState("");
     const createPostFileInput = useRef();
+
     useEffect(() => {
         if (location.pathname === "/auth") {
             NavBar.current.style.display = "none";
@@ -55,7 +57,7 @@ export default function NavBar() {
     };
 
     const createPostButtonClickHandler = async (e) => {
-        let { url } = process.env.SERVER_URL;
+        const { url } = process.env.SERVER_URL;
         const file = createPostFileInput.current.files[0];
         console.log(createPostTextInput);
         console.log(file);
@@ -84,13 +86,59 @@ export default function NavBar() {
             method: "POST",
             body: formData,
         });
-        if (responseValidator(response) !== true) {
+        if (!responseValidator(response)) {
             return;
         }
         const data = await response.json();
         createPostDialog.current.toggleAttribute("open");
         alert(data.message);
+
+		sessionStorage.clear();
+        const user = await getCurrentUser();
+        setUser(user);
+        sessionStorage.setItem("user", JSON.stringify(user));
     };
+
+	const acceptFriendButtonClickHandler = async (friendid) => {
+        const { url } = process.env.SERVER_URL;
+        const response = await fetch(
+            `${url}/users/friends/accept?friendid=${friendid}`,
+            {
+                ...fetchOptions,
+                method: "POST",
+            }
+        );
+        if (responseValidator(response) !== true) {
+            return;
+        }
+        const data = await response.json();
+        alert(data.message);
+
+        sessionStorage.clear();
+        const user = await getCurrentUser();
+        setUser(user);
+        sessionStorage.setItem("user", JSON.stringify(user));
+    };
+    const declineFriendButtonClickHandler = async (friendid) => {
+        const { url } = process.env.SERVER_URL;
+        const response = await fetch(
+            `${url}/users/friends/decline?friendid=${friendid}`,
+            {
+                ...fetchOptions,
+                method: "POST",
+            }
+        );
+        if (responseValidator(response) !== true) {
+            return;
+        }
+        const data = await response.json();
+        alert(data.message);
+
+        sessionStorage.clear();
+		const user = await getCurrentUser();
+        setUser(user);
+        sessionStorage.setItem("user", JSON.stringify(user));
+	};
 
     return (
         <nav ref={NavBar}>
@@ -129,6 +177,8 @@ export default function NavBar() {
                                     profilePic={friend.user.profilePic}
                                     id={friend.user._id}
                                     key={index}
+									acceptButtonHandler={acceptFriendButtonClickHandler}
+									declineButtonHandler={declineFriendButtonClickHandler}
                                 />
                             );
                         })
@@ -180,38 +230,10 @@ export default function NavBar() {
     );
 }
 
-function FriendRequest({ username, profilePic, id }) {
+function FriendRequest({ username, profilePic, id, declineButtonHandler, acceptButtonHandler }) {
     const navigate = useNavigate();
     let { url } = process.env.SERVER_URL;
 
-    const acceptFriendButtonClickHandler = async (friendid) => {
-        const response = await fetch(
-            `${url}/users/friends/accept?friendid=${friendid}`,
-            {
-                ...fetchOptions,
-                method: "POST",
-            }
-        );
-        if (responseValidator(response) !== true) {
-            return;
-        }
-        const data = await response.json();
-        console.log(data);
-    };
-    const declineFriendButtonClickHandler = async (friendid) => {
-        const response = await fetch(
-            `${url}/users/friends/decline?friendid=${friendid}`,
-            {
-                ...fetchOptions,
-                method: "POST",
-            }
-        );
-        if (responseValidator(response) !== true) {
-            return;
-        }
-        const data = await response.json();
-        console.log(data);
-    };
     return (
         <div className="request">
             <img
@@ -220,10 +242,10 @@ function FriendRequest({ username, profilePic, id }) {
                 referrerPolicy="no-referrer"
             />
             <span onClick={(e) => navigate("/users/" + id)}>{username}</span>
-            <div onClick={(e) => acceptFriendButtonClickHandler(id)}>
+            <div onClick={(e) => acceptButtonHandler(id)}>
                 <img src={addPersonBlue} alt="Accept friend photo" />
             </div>
-            <div onClick={(e) => declineFriendButtonClickHandler(id)}>
+            <div onClick={(e) => declineButtonHandler(id)}>
                 <img src={decline} alt="Decline friend photo" />
             </div>
         </div>

@@ -54,9 +54,9 @@ export async function getCurrentUser() {
 export function responseValidator(fetchResponse) {
     const { url } = process.env.SERVER_URL;
     if (fetchResponse.status === 401) {
-        logout(url);
+        logout();
         sessionStorage.clear();
-        location.pathname = "/auth"
+        location.pathname = "/auth";
         return false;
     }
     if (fetchResponse.status === 400) {
@@ -76,24 +76,37 @@ export async function getPosts(userid, skip) {
             method: "GET",
         }
     );
-	if (responseValidator(response) !== true) {
+    if (responseValidator(response) !== true) {
         return;
     }
-	const posts = await response.json();
-	posts.forEach((post) => {
-		if (post.img) {
-			if (post.img.startsWith("iVBORw0KGgo=")) {
-				// png
-				post.imgMime = "image/png"
-			} else if (post.img.startsWith("/9j/")) {
-				// jpeg
-				post.imgMime = "image/jpeg"
-			} else if (post.img.startsWith("R0lGODlh") || post.img.startsWith("R0lGODdh")) {
-				// gif
-				post.imgMime = "image/gif"
-	
-			}
-		}
-	});
-	return posts;
+    const posts = await response.json();
+    posts.forEach((post) => {
+        if (post.img) {
+			post.imgMime = getImgMime(post.img);
+        }
+    });
+    return posts;
+}
+export function isValidUrl(url) {
+    return new RegExp(
+        "^(https?:\\/\\/)?" +
+            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
+            "((\\d{1,3}\\.){3}\\d{1,3}))" +
+            "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
+            "(\\?[;&a-z\\d%_.~+=-]*)?" +
+            "(\\#[-a-z\\d_]*)?$",
+        "i"
+    ).test(url);
+}
+export function getImgMime(img) {
+    if (img.startsWith("iVBORw0KGgo=")) {
+        // png
+        return "image/png";
+    } else if (img.startsWith("/9j/")) {
+        // jpeg
+        return "image/jpeg";
+    } else if (img.startsWith("R0lGODlh") || img.startsWith("R0lGODdh")) {
+        // gif
+        return "image/gif";
+    }
 }

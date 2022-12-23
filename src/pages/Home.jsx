@@ -3,10 +3,13 @@ import Post from "../components/Post";
 import Button from "../components/Button";
 import "../styles/Home.css";
 import { getPosts } from "../helpers/helper";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
     const [skip, setSkip] = useState(0);
+
+	const navigate = useNavigate()
 
     useEffect(() => {
         if (!document.cookie.includes("check=1")) {
@@ -47,6 +50,7 @@ export default function Home() {
                                         ? `data:${post.imgMime};base64,${post.img}`
                                         : null
                                 }
+                                likes={post.likes.length}
                                 id={post._id}
                                 key={index}
                             />
