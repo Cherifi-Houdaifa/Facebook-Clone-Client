@@ -33,18 +33,20 @@ export default function Profile() {
         const sessionUser = sessionStorage.getItem("user");
         if (sessionUser) {
             setUser(JSON.parse(sessionUser));
-        } else {
-            getCurrentUser().then((user) => {
-                setUser(user);
-                sessionStorage.setItem("user", JSON.stringify(user));
-            });
-        }
-        getPosts(JSON.parse(sessionStorage.getItem("user"))._id, skip).then(
-            (posts) => {
+            getPosts(JSON.parse(sessionUser)._id, skip).then((posts) => {
                 setSkip(skip + posts.length);
                 setPosts(posts);
-            }
-        );
+            });
+        } else {
+            getCurrentUser().then((user) => {
+                sessionStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+                getPosts(user._id, skip).then((posts) => {
+                    setSkip(skip + posts.length);
+                    setPosts(posts);
+                });
+            });
+        }
     }, []);
 
     const seemoreButtonClickHandler = async (e) => {
@@ -83,7 +85,7 @@ export default function Profile() {
         });
         const data = await response.json();
         if (response.status === 401) {
-            logout();
+            await logout();
             sessionStorage.clear();
             location.pathname = "/auth";
             return;
@@ -172,33 +174,38 @@ export default function Profile() {
                 <h2>Posts</h2>
                 <div>
                     {posts &&
-                        sessionStorage.getItem("user") &&
-                        posts.map((post, index) => {
-                            return (
-                                <Post
-                                    liked={post.likes.includes(
-                                        JSON.parse(
-                                            sessionStorage.getItem("user")
-                                        )._id
-                                    )}
-                                    text={post.text}
-                                    image={
-                                        post.img
-                                            ? `data:${post.imgMime};base64,${post.img}`
-                                            : null
-                                    }
-                                    likes={post.likes.length}
-                                    id={post._id}
-                                    key={index}
-                                />
-                            );
-                        })}
-                </div>
-                <div>
-                    <Button
-                        text="See more"
-                        clickHandler={seemoreButtonClickHandler}
-                    />
+                    sessionStorage.getItem("user") &&
+                    posts.length !== 0 ? (
+                        <>
+                            {posts.map((post, index) => {
+                                return (
+                                    <Post
+                                        liked={post.likes.includes(
+                                            JSON.parse(
+                                                sessionStorage.getItem("user")
+                                            )._id
+                                        )}
+                                        text={post.text}
+                                        image={
+                                            post.img
+                                                ? `data:${post.imgMime};base64,${post.img}`
+                                                : null
+                                        }
+                                        likes={post.likes.length}
+                                        id={post._id}
+                                        key={index}
+                                    />
+                                );
+                            })}
+                            <Button
+                                text="See more"
+                                clickHandler={seemoreButtonClickHandler}
+                            />
+                            ;
+                        </>
+                    ) : (
+                        <h1>No posts</h1>
+                    )}
                 </div>
             </article>
             <dialog ref={updateProfileDialog}>

@@ -14,7 +14,7 @@ main.auth > article.text div {
     margin-top: 27%;
 }
 main.auth > article.text h1 {
-    font-family: "otomanopee";
+    font-family: fantasy;
     font-size: 2.8rem;
 }
 main.auth > article.text p.subname {
@@ -28,7 +28,7 @@ main.auth > article.text p.subtext {
     font-size: 1.2rem;
 }
 main.auth > article.text span {
-    font-family: "otomanopee";
+    font-family: fantasy;
 }
 
 main.auth > article.form {

@@ -52,11 +52,11 @@ export async function getCurrentUser() {
     return user;
 }
 export function responseValidator(fetchResponse) {
-    const { url } = process.env.SERVER_URL;
     if (fetchResponse.status === 401) {
-        logout();
-        sessionStorage.clear();
-        location.pathname = "/auth";
+        logout().then((value) => {
+            sessionStorage.clear();
+            location.pathname = "/auth";
+        });
         return false;
     }
     if (fetchResponse.status === 400) {
@@ -82,7 +82,7 @@ export async function getPosts(userid, skip) {
     const posts = await response.json();
     posts.forEach((post) => {
         if (post.img) {
-			post.imgMime = getImgMime(post.img);
+            post.imgMime = getImgMime(post.img);
         }
     });
     return posts;
@@ -109,4 +109,26 @@ export function getImgMime(img) {
         // gif
         return "image/gif";
     }
+}
+export async function getUser(userid) {
+    const { url } = process.env.SERVER_URL;
+    const response = await fetch(`${url}/users/${userid}`, {
+        ...fetchOptions,
+        method: "GET",
+    });
+    if (response.status === 401) {
+        await logout();
+        sessionStorage.clear();
+        location.pathname = "/auth";
+        return;
+    }
+    if (response.status === 400) {
+        alert("Invalid user id");
+        return;
+    }
+    if (response.status === 500) {
+        return;
+    }
+    const user = await response.json();
+    return user.user;
 }

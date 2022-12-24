@@ -27,9 +27,10 @@ export default function Posts() {
             });
             const data = await response.json();
             if (response.status === 401) {
-                logout();
-                sessionStorage.clear();
-                location.pathname = "/auth";
+                logout().then((value) => {
+					sessionStorage.clear();
+					navigate("/auth");
+				});
                 return false;
             }
             if (response.status === 400 || response.status === 500) {
@@ -56,9 +57,9 @@ export default function Posts() {
         });
         const data = await response.json();
         if (response.status === 401) {
-            logout();
+            await logout();
             sessionStorage.clear();
-            location.pathname = "/auth";
+            navigate("/auth");
             return false;
         }
         if (response.status === 400 || response.status === 500) {
@@ -138,6 +139,7 @@ export default function Posts() {
                                             ? "light-comment"
                                             : "dark-comment"
                                     }`}
+									key={index}
                                 >
                                     <img
                                         src={profilePic}
@@ -149,7 +151,7 @@ export default function Posts() {
                                             )._id
                                                 ? navigate("/profile")
                                                 : navigate(
-                                                      `/users/${user._id}`
+                                                      `/users/${comment.user}`
                                                   );
                                         }}
                                     />

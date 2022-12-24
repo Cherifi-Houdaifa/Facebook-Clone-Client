@@ -22,10 +22,6 @@ body {
 span.blue {
     color: var(--secondary);
 }
-@font-face {
-    font-family: "otomanopee";
-    src: url("../assets/otomanopee-one.ttf");
-}
 .show-flex {
     display: flex !important;
 }

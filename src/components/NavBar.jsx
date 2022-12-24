@@ -50,8 +50,8 @@ export default function NavBar() {
         });
     }, [location]);
 
-    const logoutButtonClickHandler = (e) => {
-        logout();
+    const logoutButtonClickHandler = async (e) => {
+        await logout();
         sessionStorage.clear();
         navigate("/auth");
     };
