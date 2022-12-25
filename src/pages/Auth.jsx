@@ -38,7 +38,6 @@ export default function Auth() {
 		getCurrentUser().then((user) => {
 			sessionStorage.setItem("user", JSON.stringify(user));
 		});
-		navigate("/");
     };
 
     const signupButtonClickHandler = async (e) => {
@@ -85,7 +84,6 @@ export default function Auth() {
                     getCurrentUser().then((user) => {
                         sessionStorage.setItem("user", JSON.stringify(user));
                     });
-                    navigate("/");
                 }
             }
         }, 1000);
