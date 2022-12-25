@@ -53,6 +53,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: path.resolve(__dirname, "public/index.html"),
+            favicon: path.resolve(__dirname, "public/favicon.ico"),
         }),
         new webpack.DefinePlugin({
             "process.env.SERVER_URL": JSON.stringify({

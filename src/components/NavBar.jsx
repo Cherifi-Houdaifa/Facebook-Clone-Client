@@ -59,8 +59,6 @@ export default function NavBar() {
     const createPostButtonClickHandler = async (e) => {
         const { url } = process.env.SERVER_URL;
         const file = createPostFileInput.current.files[0];
-        console.log(createPostTextInput);
-        console.log(file);
         if (createPostTextInput === "") {
             alert("You must fill the text input");
             return;
