@@ -32,15 +32,13 @@ export default function Auth() {
         if (response.status === 401) {
             return alert("Invalid username or password");
         }
-        if (document.cookie.includes("check=1")) {
-            // the user is logged in successfly
-            // if the user was logged in before
-            sessionStorage.clear();
-            getCurrentUser().then((user) => {
-                sessionStorage.setItem("user", JSON.stringify(user));
-                navigate("/");
-            });
-        }
+		const data = await response.json();
+		alert(data.message);
+		sessionStorage.clear();
+		getCurrentUser().then((user) => {
+			sessionStorage.setItem("user", JSON.stringify(user));
+		});
+		navigate("/");
     };
 
     const signupButtonClickHandler = async (e) => {
