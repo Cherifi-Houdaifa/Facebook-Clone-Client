@@ -32,12 +32,14 @@ export default function Auth() {
         if (response.status === 401) {
             return alert("Invalid username or password");
         }
-		const data = await response.json();
-		alert(data.message);
-		sessionStorage.clear();
-		getCurrentUser().then((user) => {
-			sessionStorage.setItem("user", JSON.stringify(user));
-		});
+        const data = await response.json();
+        alert(data.message);
+        sessionStorage.clear();
+        getCurrentUser().then((user) => {
+            sessionStorage.setItem("user", JSON.stringify(user));
+        });
+        document.cookie = "check=1";
+        navigate("/");
     };
 
     const signupButtonClickHandler = async (e) => {
@@ -77,14 +79,14 @@ export default function Auth() {
         const popup = window.open(url + "/auth/google", "_blank", "popup=1");
         const popupCheck = setInterval(() => {
             if (popup.closed) {
-                if (document.cookie.includes("check=1")) {
-                    // the user is logged in successfly
-                    clearInterval(popupCheck);
-                    sessionStorage.clear();
-                    getCurrentUser().then((user) => {
-                        sessionStorage.setItem("user", JSON.stringify(user));
-                    });
-                }
+                // the user is logged in successfly
+                clearInterval(popupCheck);
+                sessionStorage.clear();
+                getCurrentUser().then((user) => {
+                    sessionStorage.setItem("user", JSON.stringify(user));
+                });
+                document.cookie = "check=1";
+                navigate("/");
             }
         }, 1000);
     };
