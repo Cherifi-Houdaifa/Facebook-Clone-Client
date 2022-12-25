@@ -38,8 +38,8 @@ export default function Auth() {
             sessionStorage.clear();
             getCurrentUser().then((user) => {
                 sessionStorage.setItem("user", JSON.stringify(user));
+                navigate("/");
             });
-            navigate("/");
         }
     };
 
