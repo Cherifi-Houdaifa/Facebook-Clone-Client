@@ -4,6 +4,7 @@ export async function logout() {
         ...fetchOptions,
         method: "GET",
     });
+	document.cookie = "";
     return true;
 }
 
