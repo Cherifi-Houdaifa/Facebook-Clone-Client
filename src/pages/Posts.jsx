@@ -87,7 +87,7 @@ export default function Posts() {
                             (post && post.user._id) ===
                             JSON.parse(sessionStorage.getItem("user"))._id
                                 ? navigate("/profile")
-                                : navigate(`/users/${user._id}`);
+                                : navigate(`/users/${post.user._id}`);
                         }}
                     />
                     <span>{post && post.user.username}</span>
